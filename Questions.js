@@ -5,18 +5,41 @@ class Questions{
 
     getState(){
         var gameStateref = database.ref('gameState');
-        gameStateref.on("values",function(data){
+        gameStateref.on("value",function(data){
             gameState = data.val();
         });
     }
 
-    update(state){
-        database.ref('/').update({gameState: state});
+    static update(state){
+        database.ref('/').update({
+            gameState: state
+        });
     }
 
-    getAnswer(){
-        if(gameState===0){
-            display();
-        }
+    static getYesAnswers(){
+        var YesAnsRef = database.ref('yesAnswers');
+        YesAnsRef.on("value",(data)=>{
+            yesAnswers = data.val();
+        });
     }
+
+    static updateYesAnswer(ans){
+        database.ref('/').update({
+            yesAnswers: ans
+        })
+    }
+
+    static getNoAnswers(){
+        var NoAnsRef = database.ref('noAnswers');
+        NoAnsRef.on("value",(data)=>{
+            noAnswers = data.val();
+        });
+    }
+
+    static updateNoAnswer(ans){
+        database.ref('/').update({
+            noAnswers: ans
+        })
+    }
+
 }

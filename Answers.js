@@ -1,25 +1,69 @@
-class Answers{
+class Answer{
     constructor(){
-
+        this.title = createElement('h1');
+        this.a1 = createButton("Yes");
+        this.a2 = createButton("No");
+        this.reset = createButton('Again');
+        this.q1 = createElement('h2');
+        this.q2 = createElement('h2');
+        this.q3 = createElement('h2');
+        this.thankYou = createElement('h1');
     }
 
     display(){
-        title = createElement('h2');
-        title.html("A Survey To Bring About Change");
-        title.position(150,70);
+        this.title.html("A Survey To Bring About Change");
+        this.title.position(displayWidth/4,50);
 
-        var a1 = createButton("Yes");
-        var a2 = createButton("No");
+        this.reset.position(displayWidth-50,50);
 
-        a1.position(0,0);
-        a2.position(0,0);
+        this.a1.position(displayWidth/3,displayHeight/2+50);
+        this.a2.position(displayWidth/3,displayHeight/2+80);
 
-        a1.mousePressed(function(){
-            update();
+        question.getState();
+        Questions.getYesAnswers();
+        Questions.getNoAnswers();
+        this.reset.mousePressed(function(){
+            Questions.update(0);
+            Questions.updateYesAnswer(0);
+            Questions.updateNoAnswer(0);
+        })
+    }
+
+    Q1display(){
+        this.q1.html('Do you know about the Coronavirus ?');
+        this.q1.position(displayWidth/4,displayHeight/2-100);
+    }
+
+    Q2display(){
+        this.q2.html('Are your relatives infected ?');
+        this.q2.position(displayWidth/4,displayHeight/2-50);
+    }
+
+    Q3display(){
+        this.q3.html('Do you believe God can stop this pandemic ?');
+        this.q3.position(displayWidth/4,displayHeight/2);
+    }
+
+    ThankYou(){
+        this.thankYou.html('THANK - YOU!');
+        this.thankYou.position(displayWidth/4,100);;
+    }
+
+    YesUpdate(state){
+        Questions.getYesAnswers();
+        this.a1.mousePressed(function(){
+            Questions.update(state);
+            YesAns+=1;
+            Questions.updateYesAnswer(YesAns);
         });
+    }
 
-        a2.mousePressed(function(){
-            update();
+    NoUpdate(state){
+        Questions.getNoAnswers();
+        this.a2.mousePressed(function(){
+            Questions.update(state);
+            NoAns+=1;
+            Questions.updateNoAnswer(NoAns);
         });
     }
 }
