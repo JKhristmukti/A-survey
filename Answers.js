@@ -37,16 +37,24 @@ class Answer{
     Q2display(){
         this.q2.html('Are your relatives infected ?');
         this.q2.position(displayWidth/4,displayHeight/2-50);
+        this.q1.hide();
     }
 
     Q3display(){
         this.q3.html('Do you believe God can stop this pandemic ?');
         this.q3.position(displayWidth/4,displayHeight/2);
+        this.q1.hide();
+        this.q2.hide();
     }
 
     ThankYou(){
         this.thankYou.html('THANK - YOU!');
-        this.thankYou.position(displayWidth/4,100);;
+        this.thankYou.position(displayWidth/4,100);
+        this.q1.hide();
+        this.q2.hide();
+        this.q3.hide();
+        this.a1.hide();
+        this.a2.hide();
     }
 
     YesUpdate(state){
